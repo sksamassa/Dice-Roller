@@ -1,42 +1,41 @@
 package com.example.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.*
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.example.diceroller.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
 
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setContentView( R.layout.activity_main)
 
-        binding.rollButton.setOnClickListener {
-            rollDice()
-        }
+        val navHostFragment: NavHostFragment = supportFragmentManager.findFragmentById(R.id.myHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val navView = findViewById<NavigationView>(R.id.nav_view)
 
+        drawerLayout = findViewById(R.id.drawer_layout)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        NavigationUI.setupWithNavController(navView, navController)
     }
-    private fun rollDice() {
 
-        binding.apply {
-            invalidateAll()
-            val randNum = (1..6).random()
-            val drawableResource = when(randNum){
-                1 -> R.drawable.dice_1
-                2 -> R.drawable.dice_2
-                3 -> R.drawable.dice_3
-                4 -> R.drawable.dice_4
-                5 -> R.drawable.dice_5
-                else -> R.drawable.dice_6
-            }
-
-            diceImage.setImageResource(drawableResource)
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.myHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
 

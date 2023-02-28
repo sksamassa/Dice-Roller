@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">DiceRoller</string>
     <string name="roll">Roll</string>
+    <string name="dice_bouton">Dice bouton</string>
+    <string name="dice_image">Dice image</string>
+    <string name="about_title">About us</string>
+    <string name="about_text">This application is just a product of university project
+    about android development with Kotlin developed by Sekou Samassa.
+    He is a student in software engineering in Russian Federation where has lived
+    since November 2019.</string>
+    <string name="licence_title">Product licence</string>
+    <string name="licence_text">This product is a freeware. You can\'t find the source in GitHub https://github.com/sksamassa/Dice-Roller. Though, we would be good if you mention our name.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_0">Total: 0</string>
+    <string name="play">Play</string>
+    <string name="share">Share</string>
+    <string name="share_mood">I\'m playing Dice. It is amazing !!!!</string>
+    <string name="help">Dice Help</string>
+    <string name="try_again">Try again</string>
+    <string name="next_match">Next match</string>
+    <string name="dice_help">In each round it adds the score result with the previous. The point of the game is if the score reaches 36 without overcoming it. The player wins the game. If he overcomes 36, he loses it. </string>
+    <string name="dice_rules">Dice rules</string>
+    <string name="the_rule_of_36">The rule of 36</string>
 </resources>
